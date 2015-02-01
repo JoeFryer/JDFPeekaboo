@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'JDFPeekaboo', :exclusive => true do
+  pod "JDFPeekaboo", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "JDFPeekaboo", :path => "../"
+
+  pod 'Specta', :git => 'https://github.com/specta/specta.git', :tag => 'v0.3.0.beta1'
+  pod 'Expecta'
+end
