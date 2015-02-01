@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JDFViewController : UIViewController
+@interface JDFViewController : UITableViewController
 
 @end
