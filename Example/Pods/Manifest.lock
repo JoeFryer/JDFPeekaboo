@@ -1,0 +1,28 @@
+PODS:
+  - Expecta (0.3.1)
+  - JDFPeekaboo (0.1.0)
+  - Specta (0.3.0.beta1)
+
+DEPENDENCIES:
+  - Expecta
+  - JDFPeekaboo (from `../`)
+  - Specta (from `https://github.com/specta/specta.git`, tag `v0.3.0.beta1`)
+
+EXTERNAL SOURCES:
+  JDFPeekaboo:
+    :path: ../
+  Specta:
+    :git: https://github.com/specta/specta.git
+    :tag: v0.3.0.beta1
+
+CHECKOUT OPTIONS:
+  Specta:
+    :git: https://github.com/specta/specta.git
+    :tag: v0.3.0.beta1
+
+SPEC CHECKSUMS:
+  Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
+  JDFPeekaboo: 25b04a823c20e04c5c072cd1176837670f181e29
+  Specta: 63e8ac8e07db6675c7096d37f77a266a1be4c02d
+
+COCOAPODS: 0.35.0
