@@ -19,7 +19,7 @@
 @property (nonatomic, weak) UIScrollView *scrollView;
 
 /**
- *  This is the view that contains the scrollView.
+ *  This is the view that contains the top & bottom views, if this isn't the scrollView.
  */
 @property (nonatomic, weak) UIView *containingView;
 
