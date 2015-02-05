@@ -6,6 +6,10 @@
 
 JDFPeekaboo is a simple class that hides the navigation bar when you scroll down, and shows it again when you scroll back up. It can actually be any UIView that it hides, and it will also hide a view at the bottom of the screen as well, if you like.
 
+Here's a little demo of it in use:
+
+<img src="Screenshots/Peekaboo.gif" width="300"/>
+
 It's very easy to use. Simply add a property for it:
 
     @property (nonatomic, strong) JDFPeekabooCoordinator *scrollCoordinator;
