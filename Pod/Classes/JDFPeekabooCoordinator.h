@@ -34,7 +34,7 @@
 /**
  *  This is an array of views (typically they are subviews of the top view) that will be dimmed, and eventually become invisible, as the topView is hidden. This is useful if you have some stuff on your top view that you want to be hidden when it is in its most hidden position.
  */
-@property (nonatomic, strong) NSArray *topViewItems;
+@property (nonatomic, strong) NSMutableArray *topViewItems;
 
 /**
  *  This is the height of the topView when it is in its most minimised position. The default is 20.0f;

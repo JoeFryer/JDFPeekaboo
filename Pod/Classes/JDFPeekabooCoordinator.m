@@ -56,6 +56,13 @@
 {
     _topView = topBar;
     self.topViewDefaultY = topBar.frame.origin.y;
+    self.topViewItems = [NSMutableArray array];
+    
+    for (UIView* view in topBar.subviews) {
+        if (view != [topBar.subviews objectAtIndex:0] && !view.hidden && !view.alpha == 0.0f) {
+            [self.topViewItems addObject:view];
+        }
+    }
 }
 
 
@@ -136,7 +143,7 @@
     
     CGFloat topViewPercentageHidden = [self topViewPercentageHidden];
     [self updateTopViewSubviews:(1 - topViewPercentageHidden)];
-        
+    
     self.previousScrollViewYOffset = scrollOffset;
 }
 
@@ -179,7 +186,7 @@
     } else if (alpha < 0.0f) {
         alpha = 0.0f;
     }
-
+    
     for (UIView *view in self.topViewItems) {
         view.alpha = alpha;
     }
