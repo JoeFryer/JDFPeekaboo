@@ -29,7 +29,7 @@ self.scrollCoordinator.bottomView = self.navigationController.toolbar;
 
 <img src="Screenshots/JDFPeekaboo_Issue.gif" width="300"/>
 
-A: This happens if your table view doesn't extend behind the `navigationBar`/`tabBar`. You can fix this by setting your `UIViewController`/`UITableViewController`'s `edgesForExtendedLayout` (to `UIRectEdgeTop`/`UIRectEdgeBottom`/`UIRectEdgeAll`/whatever is appropriate).
+A: This happens if your table view doesn't extend behind the `navigationBar`/`tabBar`. You can fix this by setting your `UIViewController`/`UITableViewController`'s `edgesForExtendedLayout` (to `UIRectEdgeTop`/`UIRectEdgeBottom`/`UIRectEdgeAll`/whatever is appropriate), or by doing the equivalent in interface builder.
 
 ## Usage
 
