@@ -23,6 +23,14 @@ self.scrollCoordinator.topView = self.navigationController.navigationBar;
 self.scrollCoordinator.bottomView = self.navigationController.toolbar;
 ```
 
+## FAQ
+
+**Q: Why are there black spaces at the top/bottom of the screen, like this:**
+
+<img src="Screenshots/JDFPeekaboo_Issue.gif" width="300"/>
+
+A: This happens if your table view doesn't extend behind the `navigationBar`/`tabBar`. You can fix this by setting your `UIViewController`/`UITableViewController`'s `edgesForExtendedLayout` (to `UIRectEdgeTop`/`UIRectEdgeBottom`/`UIRectEdgeAll`/whatever is appropriate).
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
