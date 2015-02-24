@@ -59,7 +59,10 @@
     self.topViewItems = [NSMutableArray array];
     
     for (UIView* view in topBar.subviews) {
-        if (view != [topBar.subviews objectAtIndex:0] && !view.hidden && !view.alpha == 0.0f) {
+        bool isBackgroundView = [topBar isKindOfClass:[UINavigationBar class]] && view == [topBar.subviews objectAtIndex:0];
+        bool isHidden = view.hidden || view.alpha == 0.0f;
+        
+        if (!isBackgroundView && !isHidden) {
             [self.topViewItems addObject:view];
         }
     }
