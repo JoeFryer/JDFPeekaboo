@@ -165,7 +165,15 @@
 - (void)stoppedScrolling:(UIScrollView *)scrollView
 {
     CGRect topViewFrame = self.topView.frame;
+    CGFloat topViewMinimisedY = -topViewFrame.size.height + self.topViewMinimisedHeight;
+    CGFloat topViewHalfY = (topViewMinimisedY + self.topViewDefaultY) / 2;
     if (topViewFrame.size.height + scrollView.contentOffset.y - self.topViewMinimisedHeight < 0) {
+        [self animateTopViewToYPosition:self.topViewDefaultY];
+        [self animateBottomViewToYPosition:(self.containingView.frame.size.height - self.bottomBarDefaultHeight)];
+    } else if(topViewFrame.origin.y > topViewMinimisedY && topViewFrame.origin.y < topViewHalfY) {
+        [self animateTopViewToYPosition:topViewMinimisedY];
+        [self animateBottomViewToYPosition:(self.containingView.frame.size.height)];
+    } else if(topViewFrame.origin.y < self.topViewDefaultY && topViewFrame.origin.y >= topViewHalfY) {
         [self animateTopViewToYPosition:self.topViewDefaultY];
         [self animateBottomViewToYPosition:(self.containingView.frame.size.height - self.bottomBarDefaultHeight)];
     }
