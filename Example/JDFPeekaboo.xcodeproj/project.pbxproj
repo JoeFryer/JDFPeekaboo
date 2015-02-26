@@ -23,6 +23,7 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		F2000F931A9F2E2B009BA46B /* JDFDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2000F921A9F2E2B009BA46B /* JDFDetailViewController.m */; };
 		F26B325A1A7EA0E200A3F431 /* JDFPeekabooCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = F26B32591A7EA0E200A3F431 /* JDFPeekabooCoordinator.m */; };
 		F60E7A04DE3ACBFA60F5B8FF /* libPods-JDFPeekaboo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF7DF190A9DCF27900EC587E /* libPods-JDFPeekaboo.a */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,8 @@
 		7BD895CD5D79B738FB85E7B7 /* Pods-JDFPeekaboo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JDFPeekaboo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JDFPeekaboo/Pods-JDFPeekaboo.release.xcconfig"; sourceTree = "<group>"; };
 		AF7DF190A9DCF27900EC587E /* libPods-JDFPeekaboo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JDFPeekaboo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF139E7FEC448912DCCAC4B0 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		F2000F911A9F2E2B009BA46B /* JDFDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDFDetailViewController.h; sourceTree = "<group>"; };
+		F2000F921A9F2E2B009BA46B /* JDFDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDFDetailViewController.m; sourceTree = "<group>"; };
 		F26B32581A7EA0E200A3F431 /* JDFPeekabooCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDFPeekabooCoordinator.h; path = ../../Pod/Classes/JDFPeekabooCoordinator.h; sourceTree = "<group>"; };
 		F26B32591A7EA0E200A3F431 /* JDFPeekabooCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDFPeekabooCoordinator.m; path = ../../Pod/Classes/JDFPeekabooCoordinator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +156,8 @@
 				6003F5A2195388D20070C39A /* Main_iPad.storyboard */,
 				6003F5A5195388D20070C39A /* JDFViewController.h */,
 				6003F5A6195388D20070C39A /* JDFViewController.m */,
+				F2000F911A9F2E2B009BA46B /* JDFDetailViewController.h */,
+				F2000F921A9F2E2B009BA46B /* JDFDetailViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -375,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2000F931A9F2E2B009BA46B /* JDFDetailViewController.m in Sources */,
 				6003F59E195388D20070C39A /* JDFAppDelegate.m in Sources */,
 				F26B325A1A7EA0E200A3F431 /* JDFPeekabooCoordinator.m in Sources */,
 				6003F5A7195388D20070C39A /* JDFViewController.m in Sources */,

@@ -11,6 +11,9 @@
 // Peekaboo
 #import "JDFPeekabooCoordinator.h"
 
+// View Controllers
+#import "JDFDetailViewController.h"
+
 
 static NSString *const JDFSampleViewControllerCellIdentifier = @"JDFSampleViewControllerCellIdentifier";
 
@@ -37,7 +40,6 @@ static NSString *const JDFSampleViewControllerCellIdentifier = @"JDFSampleViewCo
     self.scrollCoordinator = [[JDFPeekabooCoordinator alloc] init];
     self.scrollCoordinator.scrollView = self.tableView;
     self.scrollCoordinator.topView = self.navigationController.navigationBar;
-    self.scrollCoordinator.containingView = self.navigationController.view;
     self.scrollCoordinator.topViewMinimisedHeight = 20.0f;
     self.scrollCoordinator.bottomView = self.navigationController.toolbar;
     
@@ -45,6 +47,20 @@ static NSString *const JDFSampleViewControllerCellIdentifier = @"JDFSampleViewCo
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:JDFSampleViewControllerCellIdentifier];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.scrollCoordinator disable];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.scrollCoordinator enable];
 }
 
 
@@ -60,6 +76,15 @@ static NSString *const JDFSampleViewControllerCellIdentifier = @"JDFSampleViewCo
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:JDFSampleViewControllerCellIdentifier forIndexPath:indexPath];
     cell.textLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
     return cell;
+}
+
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    JDFDetailViewController *detailViewController = [[JDFDetailViewController alloc] initWithStyle:UITableViewStylePlain];
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 @end

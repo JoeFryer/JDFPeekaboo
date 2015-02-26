@@ -52,13 +52,72 @@
 #pragma mark - Methods
 
 /**
- *  This method updates the Alpha of the @c topViewItems. You should call this method if you manually adjust the frame of the topView to make sure the alpha of the @c topViewItems is corrrect.
+ *  Updates the Alpha of the @c topViewItems. You should call this method if you manually adjust the frame of the topView to make sure the alpha of the @c topViewItems is corrrect.
  */
 - (void)setBarsNeedDisplay;
 
 /**
- *  This method returns all of the views to their default position.
+ *  Returns all of the views to their default position.
  */
 - (void)fullyExpandViews;
+
+/**
+ *  Moves all of the views to their minimised position;
+ */
+- (void)fullyHideViews;
+
+
+#pragma mark - Enabling/Disabling
+
+/**
+ *  Disables the @c JDFPeekabooCoordinator from automatically adjusting the views in response to the @c scrollView scrolling. Using this method fully expands the views before disabling (if you don't require this behaviour, use @c -disableLeavingViewsAtCurrentPositon).
+ 
+ *   @note Disabling c JDFPeekabooCoordinator only disables adjustments that are in response to the @c scrollView. Calling methods like @c -fullyExpandViews still takes effect.
+ */
+- (void)disable;
+
+/**
+ *  Disables the @c JDFPeekabooCoordinator from automatically adjusting the views in response to the @c scrollView scrolling. Using this method leaves the bars in their current position.
+ 
+ *  @note Disabling c JDFPeekabooCoordinator only disables adjustments that are in response to the @c scrollView. Calling methods like @c -fullyExpandViews still takes effect.
+ */
+- (void)disableLeavingViewsAtCurrentPositon;
+
+/**
+ *  Disables the @c JDFPeekabooCoordinator from automatically adjusting the views in response to the @c scrollView scrolling, optionally returning all views to their default (expanded) postion.
+ *
+ *  @param expandViews Indicates whether or not to expand the views before disabling.
+ 
+ *  @note Disabling c JDFPeekabooCoordinator only disables adjustments that are in response to the @c scrollView. Calling methods like @c -fullyExpandViews still takes effect.
+ */
+- (void)disableFullyExpandingViews:(BOOL)expandViews;
+
+/**
+ *  Disables the @c JDFPeekabooCoordinator from automatically adjusting the views in response to the @c scrollView scrolling, optionally returning all views to their hidden (minimised) postion.
+ *
+ *  @param hideViews Indicates whether or not to hide the views before disabling.
+ 
+ *  @note Disabling c JDFPeekabooCoordinator only disables adjustments that are in response to the @c scrollView. Calling methods like @c -fullyExpandViews still takes effect.
+ */
+- (void)disableFullyHidingViews:(BOOL)hideViews;
+
+/**
+ *  Enables the @c JDFPeekabooCoordinator so that it begins adjusting the views in response to the @c scrollView scrolling. Using this method leaves the views in their current position after enabling.
+ */
+- (void)enable;
+
+/**
+ *  Enables the @c JDFPeekabooCoordinator so that it begins adjusting the views in response to the @c scrollView scrolling, optionally returning all views to their default (expanded) position.
+ *
+ *  @param expandViews Indicates whether or not to expand the views before enabling.
+ */
+- (void)enableFullyExpandingViews:(BOOL)expandViews;
+
+/**
+ *  Enables the @c JDFPeekabooCoordinator so that it begins adjusting the views in response to the @c scrollView scrolling, optionally returning all views to their hidden (minimised) position.
+ *
+ *  @param hideViews Indicates whether or not to hide the views before enabling.
+ */
+- (void)enableFullyHidingViews:(BOOL)hideViews;
 
 @end

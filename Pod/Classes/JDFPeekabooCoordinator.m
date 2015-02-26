@@ -16,6 +16,7 @@
 
 // State
 @property (nonatomic) CGFloat previousScrollViewYOffset;
+@property (nonatomic) BOOL scrollingCoordinatorEnabled;
 
 // Default values
 @property (nonatomic) CGFloat topViewDefaultY;
@@ -25,6 +26,16 @@
 
 
 @implementation JDFPeekabooCoordinator
+
+#pragma mark - Getters
+
+- (UIView *)containingView
+{
+    if (!_containingView) {
+        return _scrollView;
+    }
+    return _containingView;
+}
 
 #pragma mark - Setters
 
@@ -66,12 +77,13 @@
     self = [super init];
     if (self) {
         self.topViewMinimisedHeight = 20.0f;
+        self.scrollingCoordinatorEnabled = YES;
     }
     return self;
 }
 
 
-#pragma mark - Public
+#pragma mark - Public - General
 
 - (void)setBarsNeedDisplay
 {
@@ -86,11 +98,72 @@
     [self setBarsNeedDisplay];
 }
 
+- (void)fullyHideViews
+{
+    [self animateTopViewToYPosition:[self topViewMinimisedY]];
+    [self animateBottomViewToYPosition:[self bottomViewMinimisedY]];
+    [self setBarsNeedDisplay];
+}
+
+
+#pragma mark - Public - Enabling/Disabling
+
+- (void)disable
+{
+    [self disableFullyExpandingViews:YES];
+}
+
+- (void)disableLeavingViewsAtCurrentPositon
+{
+    self.scrollingCoordinatorEnabled = NO;
+}
+
+- (void)disableFullyExpandingViews:(BOOL)expandViews
+{
+    if (expandViews) {
+        [self fullyExpandViews];
+    }
+    self.scrollingCoordinatorEnabled = NO;
+}
+
+- (void)disableFullyHidingViews:(BOOL)hideViews
+{
+    if (hideViews) {
+        [self fullyHideViews];
+    }
+    self.scrollingCoordinatorEnabled = NO;
+}
+
+- (void)enable
+{
+    self.scrollingCoordinatorEnabled = YES;
+}
+
+- (void)enableFullyExpandingViews:(BOOL)expandViews
+{
+    if (expandViews) {
+        [self fullyExpandViews];
+    }
+    self.scrollingCoordinatorEnabled = YES;
+}
+
+- (void)enableFullyHidingViews:(BOOL)hideViews
+{
+    if (hideViews) {
+        [self fullyHideViews];
+    }
+    self.scrollingCoordinatorEnabled = YES;
+}
+
 
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    if (!self.scrollingCoordinatorEnabled) {
+        return;
+    }
+    
     if ([self.scrollViewRealDelegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
         [self.scrollViewRealDelegate scrollViewDidScroll:scrollView];
     }
@@ -142,6 +215,10 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    if (!self.scrollingCoordinatorEnabled) {
+        return;
+    }
+    
     if ([self.scrollViewRealDelegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
         [self.scrollViewRealDelegate scrollViewDidEndDecelerating:scrollView];
     }
@@ -151,6 +228,10 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
+    if (!self.scrollingCoordinatorEnabled) {
+        return;
+    }
+    
     if ([self.scrollViewRealDelegate respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)]) {
         [self.scrollViewRealDelegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
     }
@@ -165,17 +246,14 @@
 - (void)stoppedScrolling:(UIScrollView *)scrollView
 {
     CGRect topViewFrame = self.topView.frame;
-    CGFloat topViewMinimisedY = -topViewFrame.size.height + self.topViewMinimisedHeight;
+    CGFloat topViewMinimisedY = [self topViewMinimisedY];
     CGFloat topViewHalfY = (topViewMinimisedY + self.topViewDefaultY) / 2;
     if (topViewFrame.size.height + scrollView.contentOffset.y - self.topViewMinimisedHeight < 0) {
-        [self animateTopViewToYPosition:self.topViewDefaultY];
-        [self animateBottomViewToYPosition:(self.containingView.frame.size.height - self.bottomBarDefaultHeight)];
-    } else if(topViewFrame.origin.y > topViewMinimisedY && topViewFrame.origin.y < topViewHalfY) {
-        [self animateTopViewToYPosition:topViewMinimisedY];
-        [self animateBottomViewToYPosition:(self.containingView.frame.size.height)];
-    } else if(topViewFrame.origin.y < self.topViewDefaultY && topViewFrame.origin.y >= topViewHalfY) {
-        [self animateTopViewToYPosition:self.topViewDefaultY];
-        [self animateBottomViewToYPosition:(self.containingView.frame.size.height - self.bottomBarDefaultHeight)];
+        [self fullyExpandViews];
+    } else if (topViewFrame.origin.y > topViewMinimisedY && topViewFrame.origin.y < topViewHalfY) {
+        [self fullyHideViews];
+    } else if (topViewFrame.origin.y < self.topViewDefaultY && topViewFrame.origin.y >= topViewHalfY) {
+        [self fullyExpandViews];
     }
     [self setBarsNeedDisplay];
 }
@@ -232,6 +310,17 @@
     CGRect frame = self.topView.frame;
     CGFloat percentage = (self.topViewDefaultY - frame.origin.y) / (frame.size.height - 1 - self.topViewMinimisedHeight);
     return percentage;
+}
+
+- (CGFloat)topViewMinimisedY
+{
+    CGRect topViewFrame = self.topView.frame;
+    return -topViewFrame.size.height + self.topViewMinimisedHeight;
+}
+
+- (CGFloat)bottomViewMinimisedY
+{
+    return self.containingView.frame.size.height;
 }
 
 
