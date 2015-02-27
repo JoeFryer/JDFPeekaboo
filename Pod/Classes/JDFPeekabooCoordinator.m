@@ -9,6 +9,11 @@
 #import "JDFPeekabooCoordinator.h"
 
 
+// Constants
+static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferential = 20.0f; // This is the difference between the size of the navigation bar when it is in portrait and landscape. This should probably be handled more elegantly.
+
+
+
 @interface JDFPeekabooCoordinator() <UIScrollViewDelegate>
 
 // Real delegate
@@ -36,6 +41,25 @@
     }
     return _containingView;
 }
+
+- (CGFloat)topViewDefaultY
+{
+    if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+        if ([self.topView isKindOfClass:[UINavigationBar class]]) {
+            return _topViewDefaultY - [[UIApplication sharedApplication] statusBarFrame].size.height - JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferential;
+        } else {
+            return _topViewDefaultY - [[UIApplication sharedApplication] statusBarFrame].size.height;
+        }
+    } else {
+        return _topViewDefaultY;
+    }
+}
+
+- (CGFloat)bottomBarDefaultHeight
+{
+    return self.bottomView.frame.size.height;
+}
+
 
 #pragma mark - Setters
 
@@ -181,6 +205,9 @@
     CGRect bottomBarFrame = self.bottomView.frame;
     
     CGFloat topBarHeight = topBarFrame.size.height;
+    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
+        topBarHeight += self.topViewMinimisedHeight;
+    }
     CGFloat scrollOffset = scrollView.contentOffset.y;
     CGFloat scrollDiff = scrollOffset - self.previousScrollViewYOffset;
     CGFloat scrollHeight = scrollView.frame.size.height;
@@ -315,7 +342,11 @@
 - (CGFloat)topViewMinimisedY
 {
     CGRect topViewFrame = self.topView.frame;
-    return -topViewFrame.size.height + self.topViewMinimisedHeight;
+    if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+        return -topViewFrame.size.height - [[UIApplication sharedApplication] statusBarFrame].size.height;
+    } else {
+        return -topViewFrame.size.height + self.topViewMinimisedHeight;
+    }
 }
 
 - (CGFloat)bottomViewMinimisedY
