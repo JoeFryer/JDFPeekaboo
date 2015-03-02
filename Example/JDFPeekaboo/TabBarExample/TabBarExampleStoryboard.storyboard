@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Bef-zH-75Q">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Example View Controller-->
+        <scene sceneID="9Ld-xL-gvX">
+            <objects>
+                <viewController id="R1w-R4-AUc" customClass="TabBarExampleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Eek-Wj-7CV"/>
+                        <viewControllerLayoutGuide type="bottom" id="mzp-du-Fuw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hcj-WK-dTw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lyn-0e-FUm">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="R1w-R4-AUc" id="vLq-Yo-D6t"/>
+                                    <outlet property="delegate" destination="R1w-R4-AUc" id="Sd8-U5-WRE"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lyn-0e-FUm" firstAttribute="top" secondItem="Hcj-WK-dTw" secondAttribute="topMargin" id="CpT-r4-J34"/>
+                            <constraint firstItem="lyn-0e-FUm" firstAttribute="leading" secondItem="Hcj-WK-dTw" secondAttribute="leadingMargin" constant="-16" id="aGK-9E-Bwg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lyn-0e-FUm" secondAttribute="trailing" constant="-16" id="iGs-Wz-LY1"/>
+                            <constraint firstItem="lyn-0e-FUm" firstAttribute="bottom" secondItem="Hcj-WK-dTw" secondAttribute="bottomMargin" id="zOV-Th-brg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="jkQ-N8-awP"/>
+                    <connections>
+                        <outlet property="tableView" destination="lyn-0e-FUm" id="ykK-wq-RFl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xgp-0D-RVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2385" y="515"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="sGP-EI-EuC">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Bef-zH-75Q" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="3WC-9o-UmO">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Ae9-M1-gfn" kind="relationship" relationship="viewControllers" id="1eD-1D-v7o"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lz8-m7-z5z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="761" y="515"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vbK-JH-vRi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ae9-M1-gfn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="topRated" id="dWC-Me-dq8"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="x6H-wo-t90">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="R1w-R4-AUc" kind="relationship" relationship="rootViewController" id="mTk-LU-jG3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E6q-Y3-MpY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1573" y="515"/>
+        </scene>
+    </scenes>
+</document>

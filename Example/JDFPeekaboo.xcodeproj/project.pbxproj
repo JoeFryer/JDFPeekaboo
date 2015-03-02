@@ -40,6 +40,21 @@
 		F26B325A1A7EA0E200A3F431 /* JDFPeekabooCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = F26B32591A7EA0E200A3F431 /* JDFPeekabooCoordinator.m */; };
 		F288051C1AA090C700CB4259 /* CustomViewExampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F288051B1AA090C700CB4259 /* CustomViewExampleTableViewController.m */; };
 		F288051D1AA090CF00CB4259 /* CustomViewExampleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F20B44231AA08FFC00367F19 /* CustomViewExampleStoryboard.storyboard */; };
+		F28805211AA4B73E00CB4259 /* JDFDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2000F921A9F2E2B009BA46B /* JDFDetailViewController.m */; };
+		F28805221AA4B73E00CB4259 /* JDFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* JDFAppDelegate.m */; };
+		F28805231AA4B73E00CB4259 /* JDFPeekabooCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = F26B32591A7EA0E200A3F431 /* JDFPeekabooCoordinator.m */; };
+		F28805241AA4B73E00CB4259 /* JDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* JDFViewController.m */; };
+		F28805251AA4B73E00CB4259 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
+		F28805271AA4B73E00CB4259 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
+		F28805281AA4B73E00CB4259 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
+		F28805291AA4B73E00CB4259 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
+		F288052A1AA4B73E00CB4259 /* libPods-JDFPeekaboo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF7DF190A9DCF27900EC587E /* libPods-JDFPeekaboo.a */; };
+		F288052C1AA4B73E00CB4259 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A2195388D20070C39A /* Main_iPad.storyboard */; };
+		F288052D1AA4B73E00CB4259 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
+		F288052E1AA4B73E00CB4259 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6003F59F195388D20070C39A /* Main_iPhone.storyboard */; };
+		F288052F1AA4B73E00CB4259 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
+		F28805391AA4B7B300CB4259 /* TabBarExampleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F28805371AA4B78500CB4259 /* TabBarExampleStoryboard.storyboard */; };
+		F288053C1AA4B9A300CB4259 /* TabBarExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F288053B1AA4B9A300CB4259 /* TabBarExampleViewController.m */; };
 		F60E7A04DE3ACBFA60F5B8FF /* libPods-JDFPeekaboo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF7DF190A9DCF27900EC587E /* libPods-JDFPeekaboo.a */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +108,11 @@
 		F26B32591A7EA0E200A3F431 /* JDFPeekabooCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDFPeekabooCoordinator.m; path = ../../Pod/Classes/JDFPeekabooCoordinator.m; sourceTree = "<group>"; };
 		F288051A1AA090C700CB4259 /* CustomViewExampleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomViewExampleTableViewController.h; path = JDFPeekaboo/CustomViewExample/CustomViewExampleTableViewController.h; sourceTree = "<group>"; };
 		F288051B1AA090C700CB4259 /* CustomViewExampleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomViewExampleTableViewController.m; path = JDFPeekaboo/CustomViewExample/CustomViewExampleTableViewController.m; sourceTree = "<group>"; };
+		F28805341AA4B73E00CB4259 /* JDFPeekaboo copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JDFPeekaboo copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F28805351AA4B73E00CB4259 /* JDFPeekaboo copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "JDFPeekaboo copy2-Info.plist"; path = "/Users/joefryer/Business/Code/GitHub/Joe/JDFPeekaboo/Example/JDFPeekaboo copy2-Info.plist"; sourceTree = "<absolute>"; };
+		F28805371AA4B78500CB4259 /* TabBarExampleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TabBarExampleStoryboard.storyboard; path = JDFPeekaboo/TabBarExample/TabBarExampleStoryboard.storyboard; sourceTree = "<group>"; };
+		F288053A1AA4B9A300CB4259 /* TabBarExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabBarExampleViewController.h; path = JDFPeekaboo/TabBarExample/TabBarExampleViewController.h; sourceTree = "<group>"; };
+		F288053B1AA4B9A300CB4259 /* TabBarExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabBarExampleViewController.m; path = JDFPeekaboo/TabBarExample/TabBarExampleViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +149,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F28805261AA4B73E00CB4259 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F28805271AA4B73E00CB4259 /* CoreGraphics.framework in Frameworks */,
+				F28805281AA4B73E00CB4259 /* UIKit.framework in Frameworks */,
+				F28805291AA4B73E00CB4259 /* Foundation.framework in Frameworks */,
+				F288052A1AA4B73E00CB4259 /* libPods-JDFPeekaboo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -150,11 +181,13 @@
 				F26B32571A7EA05E00A3F431 /* JDFPeekaboo */,
 				6003F593195388D20070C39A /* Example */,
 				F20B44221AA08FC100367F19 /* CustomViewExample */,
+				F28805361AA4B74D00CB4259 /* TabBarExample */,
 				6003F5B5195388D20070C39A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
 				31EC18152B62BFD946287280 /* Pods */,
 				F20B44211AA08C6400367F19 /* JDFPeekaboo copy-Info.plist */,
+				F28805351AA4B73E00CB4259 /* JDFPeekaboo copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -164,6 +197,7 @@
 				6003F58A195388D20070C39A /* JDFPeekaboo.app */,
 				6003F5AE195388D20070C39A /* Tests.xctest */,
 				F20B44201AA08C6400367F19 /* JDFPeekaboo copy.app */,
+				F28805341AA4B73E00CB4259 /* JDFPeekaboo copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -258,6 +292,16 @@
 			path = JDFPeekaboo;
 			sourceTree = "<group>";
 		};
+		F28805361AA4B74D00CB4259 /* TabBarExample */ = {
+			isa = PBXGroup;
+			children = (
+				F288053A1AA4B9A300CB4259 /* TabBarExampleViewController.h */,
+				F288053B1AA4B9A300CB4259 /* TabBarExampleViewController.m */,
+				F28805371AA4B78500CB4259 /* TabBarExampleStoryboard.storyboard */,
+			);
+			name = TabBarExample;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -319,6 +363,25 @@
 			productReference = F20B44201AA08C6400367F19 /* JDFPeekaboo copy.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F288051E1AA4B73E00CB4259 /* JDFPeekabooTabBarExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F28805311AA4B73E00CB4259 /* Build configuration list for PBXNativeTarget "JDFPeekabooTabBarExample" */;
+			buildPhases = (
+				F288051F1AA4B73E00CB4259 /* Check Pods Manifest.lock */,
+				F28805201AA4B73E00CB4259 /* Sources */,
+				F28805261AA4B73E00CB4259 /* Frameworks */,
+				F288052B1AA4B73E00CB4259 /* Resources */,
+				F28805301AA4B73E00CB4259 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JDFPeekabooTabBarExample;
+			productName = JDFPeekaboo;
+			productReference = F28805341AA4B73E00CB4259 /* JDFPeekaboo copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -349,6 +412,7 @@
 			targets = (
 				6003F589195388D20070C39A /* JDFPeekaboo */,
 				F20B440A1AA08C6400367F19 /* JDFPeekabooCustomViewExample */,
+				F288051E1AA4B73E00CB4259 /* JDFPeekabooTabBarExample */,
 				6003F5AD195388D20070C39A /* Tests */,
 			);
 		};
@@ -383,6 +447,18 @@
 				F288051D1AA090CF00CB4259 /* CustomViewExampleStoryboard.storyboard in Resources */,
 				F20B441A1AA08C6400367F19 /* Main_iPhone.storyboard in Resources */,
 				F20B441B1AA08C6400367F19 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F288052B1AA4B73E00CB4259 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F28805391AA4B7B300CB4259 /* TabBarExampleStoryboard.storyboard in Resources */,
+				F288052C1AA4B73E00CB4259 /* Main_iPad.storyboard in Resources */,
+				F288052D1AA4B73E00CB4259 /* Images.xcassets in Resources */,
+				F288052E1AA4B73E00CB4259 /* Main_iPhone.storyboard in Resources */,
+				F288052F1AA4B73E00CB4259 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +555,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JDFPeekaboo/Pods-JDFPeekaboo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F288051F1AA4B73E00CB4259 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F28805301AA4B73E00CB4259 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JDFPeekaboo/Pods-JDFPeekaboo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -512,6 +618,19 @@
 				F20B440F1AA08C6400367F19 /* JDFPeekabooCoordinator.m in Sources */,
 				F20B44101AA08C6400367F19 /* JDFViewController.m in Sources */,
 				F20B44111AA08C6400367F19 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F28805201AA4B73E00CB4259 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F28805211AA4B73E00CB4259 /* JDFDetailViewController.m in Sources */,
+				F28805221AA4B73E00CB4259 /* JDFAppDelegate.m in Sources */,
+				F28805231AA4B73E00CB4259 /* JDFPeekabooCoordinator.m in Sources */,
+				F288053C1AA4B9A300CB4259 /* TabBarExampleViewController.m in Sources */,
+				F28805241AA4B73E00CB4259 /* JDFViewController.m in Sources */,
+				F28805251AA4B73E00CB4259 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,6 +854,36 @@
 			};
 			name = Release;
 		};
+		F28805321AA4B73E00CB4259 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5239B70C82F0A91AF2DDF14C /* Pods-JDFPeekaboo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JDFPeekaboo/JDFPeekaboo-Prefix.pch";
+				INFOPLIST_FILE = "JDFPeekaboo copy2-Info.plist";
+				PRODUCT_NAME = "JDFPeekaboo copy";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F28805331AA4B73E00CB4259 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BD895CD5D79B738FB85E7B7 /* Pods-JDFPeekaboo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JDFPeekaboo/JDFPeekaboo-Prefix.pch";
+				INFOPLIST_FILE = "JDFPeekaboo copy2-Info.plist";
+				PRODUCT_NAME = "JDFPeekaboo copy";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -770,6 +919,15 @@
 			buildConfigurations = (
 				F20B441E1AA08C6400367F19 /* Debug */,
 				F20B441F1AA08C6400367F19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F28805311AA4B73E00CB4259 /* Build configuration list for PBXNativeTarget "JDFPeekabooTabBarExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F28805321AA4B73E00CB4259 /* Debug */,
+				F28805331AA4B73E00CB4259 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
