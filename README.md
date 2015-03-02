@@ -23,6 +23,14 @@ self.scrollCoordinator.topView = self.navigationController.navigationBar;
 self.scrollCoordinator.bottomView = self.navigationController.toolbar;
 ```
 
+Sometimes, you may want to temporarily disable `JDFPeekaboo`, for example when you push another view controller onto your navigation controller. Some convenience methods are provided for disabling `JDFPeekaboo` (and re-enabling it). See the [documentation](http://cocoadocs.org/docsets/JDFPeekaboo/) for more info.
+
+## Documentation
+
+You can find the docs [here](http://cocoadocs.org/docsets/JDFPeekaboo/) (on [CocoaDocs](http://cocoadocs.org)).
+
+You can also find a bit more info on my [blog post](http://joefryer.github.io/blog/2015/03/01/jdfpeekaboo/)
+
 ## FAQ
 
 **Q: Why are there black spaces at the top/bottom of the screen, like this:**
