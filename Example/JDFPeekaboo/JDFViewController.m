@@ -36,6 +36,7 @@ static NSString *const JDFSampleViewControllerCellIdentifier = @"JDFSampleViewCo
     self.navigationController.toolbarHidden = NO;
     self.navigationController.navigationBar.barTintColor = blueColour;
     self.navigationController.toolbar.barTintColor = blueColour;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     self.scrollCoordinator = [[JDFPeekabooCoordinator alloc] init];
     self.scrollCoordinator.scrollView = self.tableView;
@@ -47,6 +48,15 @@ static NSString *const JDFSampleViewControllerCellIdentifier = @"JDFSampleViewCo
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:JDFSampleViewControllerCellIdentifier];
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:nil action:nil];
+    self.navigationItem.leftBarButtonItem = doneButton;
+
+    UIButton *searchButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [searchButton setImage:[UIImage imageNamed:@"SearchIcon"] forState:UIControlStateNormal];
+    searchButton.frame = CGRectMake(0.0f, 0.0f, 25.0f, 25.0f);
+    UIBarButtonItem *searchBarButton = [[UIBarButtonItem alloc] initWithCustomView:searchButton];
+    self.navigationItem.rightBarButtonItem = searchBarButton;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
