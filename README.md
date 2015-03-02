@@ -59,3 +59,16 @@ Twitter - [JoeFryer88](https://twitter.com/joefryer88)
 
 JDFPeekaboo is available under the MIT license. See the LICENSE file for more info.
 
+
+## Releases
+
+#### 0.2
+
+ - Fixed some bugs (improved landscape support).
+ - Improved the showing/hiding behaviour (thanks @gbhrdt).
+ - Fixed some CocoaPods stuff (thanks @GorkaMM).
+ - Added some convenience methods for enabling/disabling `JDFPeekaboo`.
+
+#### 0.1
+
+Initial Release
