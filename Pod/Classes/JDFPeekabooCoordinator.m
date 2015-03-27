@@ -234,6 +234,10 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
     [self.topView setFrame:topBarFrame];
     [self.bottomView setFrame:bottomBarFrame];
     
+    CGFloat top = topBarFrame.origin.y + topBarFrame.size.height;
+    CGFloat bottom = self.scrollView.frame.size.height - bottomBarFrame.origin.y;
+    self.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(top, 0, bottom, 0);
+    
     CGFloat topViewPercentageHidden = [self topViewPercentageHidden];
     [self updateTopViewSubviews:(1 - topViewPercentageHidden)];
         
