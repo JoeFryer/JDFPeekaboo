@@ -127,7 +127,7 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
         [self animateBottomViewToYPosition:(self.containingView.frame.size.height - self.bottomBarDefaultHeight)];
     };
     
-    if (animated) {
+    if (!animated) {
         [UIView performWithoutAnimation:block];
     } else {
         block();
@@ -146,7 +146,7 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
         [self animateTopViewToYPosition:[self topViewMinimisedY]];
         [self animateBottomViewToYPosition:[self bottomViewMinimisedY]];
     };
-    if (animated) {
+    if (!animated) {
         [UIView performWithoutAnimation:block];
     } else {
         block();
