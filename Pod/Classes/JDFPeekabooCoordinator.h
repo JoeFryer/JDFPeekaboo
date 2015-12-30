@@ -62,9 +62,19 @@
 - (void)fullyExpandViews;
 
 /**
+ *  Returns all of the views to their default position.
+ */
+- (void)fullyExpandViewsAnimated:(BOOL)animated;
+
+/**
  *  Moves all of the views to their minimised position;
  */
 - (void)fullyHideViews;
+
+/**
+ *  Moves all of the views to their minimised position;
+ */
+- (void)fullyHideViewsAnimated:(BOOL)animated;
 
 
 #pragma mark - Enabling/Disabling
