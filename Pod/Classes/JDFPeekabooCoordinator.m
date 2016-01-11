@@ -345,8 +345,10 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
         frame.origin.y = y;
         [self.topView setFrame:frame];
         [self updateTopViewSubviews:alpha];
-    } completion:^(BOOL finished) {
+        
         [self setBarsNeedDisplay];
+    } completion:^(BOOL finished) {
+        //[self setBarsNeedDisplay];
     }];
 }
 
@@ -356,8 +358,9 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
         CGRect frame = self.bottomView.frame;
         frame.origin.y = y;
         [self.bottomView setFrame:frame];
-    } completion:^(BOOL finished) {
         [self setBarsNeedDisplay];
+    } completion:^(BOOL finished) {
+        //[self setBarsNeedDisplay];
     }];
 }
 
