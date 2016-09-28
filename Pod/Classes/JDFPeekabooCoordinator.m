@@ -242,7 +242,7 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
     if (self.bottomView) {
         bottom = self.scrollView.frame.size.height - bottomBarFrame.origin.y;
     } else {
-        bottom = self.scrollView.scrollIndicatorInsets.bottom
+        bottom = self.scrollView.scrollIndicatorInsets.bottom;
     }
     
     self.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(top, 0, bottom, 0);
