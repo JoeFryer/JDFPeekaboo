@@ -192,7 +192,7 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
         [self.scrollViewRealDelegate scrollViewDidScroll:scrollView];
     }
     
-    if (self.containingView.bounds.size.height - self.topView.bounds.size.height >= scrollView.contentSize.height) {
+    if (self.containingView.bounds.size.height - self.topView.bounds.size.height >= scrollView.contentSize.height && self.bottomView) {
         UIEdgeInsets contentInset = self.scrollView.contentInset;
         contentInset.bottom = self.bottomView.bounds.size.height;
         scrollView.contentInset = contentInset;
@@ -226,16 +226,25 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
         bottomBarFrame.origin.y = toolbarY;
     }
     
-    UIEdgeInsets scrollViewInset = self.scrollView.contentInset;
-    CGFloat bottomInset = self.containingView.frame.size.height - bottomBarFrame.origin.y;
-    scrollViewInset.bottom = bottomInset < 0.0f ? 0.0f : bottomInset;
-    self.scrollView.contentInset = scrollViewInset;
+    if (self.bottomView) {
+        UIEdgeInsets scrollViewInset = self.scrollView.contentInset;
+        CGFloat bottomInset = self.containingView.frame.size.height - bottomBarFrame.origin.y;
+        scrollViewInset.bottom = bottomInset < 0.0f ? 0.0f : bottomInset;
+        self.scrollView.contentInset = scrollViewInset;
+    }
     
     [self.topView setFrame:topBarFrame];
     [self.bottomView setFrame:bottomBarFrame];
     
     CGFloat top = topBarFrame.origin.y + topBarFrame.size.height;
-    CGFloat bottom = self.scrollView.frame.size.height - bottomBarFrame.origin.y;
+    CGFloat bottom;
+    
+    if (self.bottomView) {
+        bottom = self.scrollView.frame.size.height - bottomBarFrame.origin.y;
+    } else {
+        bottom = self.scrollView.scrollIndicatorInsets.bottom;
+    }
+    
     self.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(top, 0, bottom, 0);
     
     CGFloat topViewPercentageHidden = [self topViewPercentageHidden];
