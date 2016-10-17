@@ -91,6 +91,16 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
 {
     _topView = topBar;
     self.topViewDefaultY = topBar.frame.origin.y;
+    self.topViewItems = [NSMutableArray array];
+    
+    for (UIView* view in topBar.subviews) {
+        bool isBackgroundView = [topBar isKindOfClass:[UINavigationBar class]] && view == [topBar.subviews objectAtIndex:0];
+        bool isHidden = view.hidden || view.alpha == 0.0f;
+        
+        if (!isBackgroundView && !isHidden) {
+            [self.topViewItems addObject:view];
+        }
+    }
 }
 
 
@@ -249,7 +259,7 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
     
     CGFloat topViewPercentageHidden = [self topViewPercentageHidden];
     [self updateTopViewSubviews:(1 - topViewPercentageHidden)];
-        
+    
     self.previousScrollViewYOffset = scrollOffset;
 }
 
@@ -305,7 +315,7 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
     } else if (alpha < 0.0f) {
         alpha = 0.0f;
     }
-
+    
     for (UIView *view in self.topViewItems) {
         view.alpha = alpha;
     }
