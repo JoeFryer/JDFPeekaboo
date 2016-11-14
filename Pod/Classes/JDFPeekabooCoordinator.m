@@ -7,6 +7,7 @@
 //
 
 #import "JDFPeekabooCoordinator.h"
+#import <objc/runtime.h>
 
 
 // Constants
@@ -416,6 +417,45 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
         return self.scrollViewRealDelegate;
     }
     return [super forwardingTargetForSelector:aSelector];
+}
+
+#pragma mark - TableView delegate forwarding
+
+- (void)forwardInvocation:(NSInvocation *)anInvocation
+{
+    if ([self isTableViewDelegateMethod:anInvocation.selector]) {
+        if ([self.scrollViewRealDelegate respondsToSelector:anInvocation.selector]) {
+            [anInvocation invokeWithTarget:self.scrollViewRealDelegate];
+        }
+    } else {
+        [super forwardInvocation:anInvocation];
+    }
+}
+
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
+{
+    if ([self isTableViewDelegateMethod:aSelector]) {
+        if ([self.scrollViewRealDelegate respondsToSelector:aSelector]) {
+
+            return [[self.scrollViewRealDelegate class]
+                    instanceMethodSignatureForSelector:aSelector];
+        }
+    }
+    NSMethodSignature *signature = [super methodSignatureForSelector:aSelector];
+
+    if (! signature) {
+        signature = [NSMethodSignature signatureWithObjCTypes:"v@:"];
+    }
+    return signature;
+}
+
+
+#pragma mark - Private
+
+- (BOOL)isTableViewDelegateMethod:(SEL)aSelector
+{
+    return protocol_getMethodDescription(@protocol(UITableViewDelegate),
+                                         aSelector, NO, YES).name != NULL;
 }
 
 @end
