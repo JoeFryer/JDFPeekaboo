@@ -747,6 +747,11 @@
 				GCC_PREFIX_HEADER = "JDFPeekaboo/JDFPeekaboo-Prefix.pch";
 				INFOPLIST_FILE = "JDFPeekaboo/JDFPeekaboo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = (
+					"-l\"JDFPeekaboo\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -765,6 +770,11 @@
 				GCC_PREFIX_HEADER = "JDFPeekaboo/JDFPeekaboo-Prefix.pch";
 				INFOPLIST_FILE = "JDFPeekaboo/JDFPeekaboo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = (
+					"-l\"JDFPeekaboo\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
