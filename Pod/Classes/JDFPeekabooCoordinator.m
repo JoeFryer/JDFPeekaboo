@@ -225,7 +225,7 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
         bottomBarFrame.origin.y = defaultBottomViewY;
     } else if ((scrollOffset + scrollHeight) >= scrollContentSizeHeight) {
         topBarFrame.origin.y = -topBarHeight + self.topViewMinimisedHeight;
-        bottomBarFrame.origin.y = defaultBottomViewY + topBarHeight;
+        bottomBarFrame.origin.y = defaultBottomViewY + self.bottomBarDefaultHeight;
     } else {
         topBarFrame.origin.y = MIN(self.topViewDefaultY, MAX(-topBarHeight + self.topViewMinimisedHeight, topBarFrame.origin.y - scrollDiff));
         CGFloat toolbarY = MAX(defaultBottomViewY, MIN(self.containingView.frame.size.height, bottomBarFrame.origin.y + scrollDiff));
