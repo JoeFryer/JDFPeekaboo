@@ -120,6 +120,9 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
     [self animateTopViewToYPosition:self.topViewDefaultY];
     [self animateBottomViewToYPosition:(self.containingView.frame.size.height - self.bottomBarDefaultHeight)];
     [self setBarsNeedDisplay];
+    if ([self.delegate respondsToSelector:@selector(peekabooCoordinator:fullyExpandedViewsForScrollView:)]) {
+        [self.delegate peekabooCoordinator:self fullyExpandedViewsForScrollView:self.scrollView];
+    }
 }
 
 - (void)fullyHideViews
@@ -127,6 +130,9 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
     [self animateTopViewToYPosition:[self topViewMinimisedY]];
     [self animateBottomViewToYPosition:[self bottomViewMinimisedY]];
     [self setBarsNeedDisplay];
+    if ([self.delegate respondsToSelector:@selector(peekabooCoordinator:fullyCollapsedViewsForScrollView:)]) {
+        [self.delegate peekabooCoordinator:self fullyCollapsedViewsForScrollView:self.scrollView];
+    }
 }
 
 
@@ -249,7 +255,21 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
     
     CGFloat topViewPercentageHidden = [self topViewPercentageHidden];
     [self updateTopViewSubviews:(1 - topViewPercentageHidden)];
-        
+    
+    if (topViewPercentageHidden == 0.0) {
+        if ([self.delegate respondsToSelector:@selector(peekabooCoordinator:fullyExpandedViewsForScrollView:)]) {
+            [self.delegate peekabooCoordinator:self fullyExpandedViewsForScrollView:scrollView];
+        }
+    } else if (topViewPercentageHidden == 1.0) {
+        if ([self.delegate respondsToSelector:@selector(peekabooCoordinator:fullyCollapsedViewsForScrollView:)]) {
+            [self.delegate peekabooCoordinator:self fullyCollapsedViewsForScrollView:scrollView];
+        }
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(peekabooCoordinator:scrolledToPercentageHidden:)]) {
+        [self.delegate peekabooCoordinator:self scrolledToPercentageHidden:topViewPercentageHidden];
+    }
+    
     self.previousScrollViewYOffset = scrollOffset;
 }
 
@@ -349,7 +369,7 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
 {
     CGFloat statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
     CGRect frame = self.topView.frame;
-    CGFloat percentage = (self.topViewDefaultY - frame.origin.y - (self.topViewDefaultY - statusBarHeight)) / (frame.size.height - 1 - self.topViewMinimisedHeight);
+    CGFloat percentage = (self.topViewDefaultY - frame.origin.y - self.topViewDefaultY) / (frame.size.height - self.topViewMinimisedHeight);
     return percentage;
 }
 

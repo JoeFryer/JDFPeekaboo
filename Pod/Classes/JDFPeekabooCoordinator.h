@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol JDFPeekabooCoordinatorDelegate;
+
 
 @interface JDFPeekabooCoordinator : NSObject
+
+#pragma mark - Delegate
+/**
+ *  The Coordinator's delegate.
+ */
+@property (nonatomic, weak) id<JDFPeekabooCoordinatorDelegate> delegate;
+
 
 #pragma mark - Main Views
 
@@ -119,5 +128,15 @@
  *  @param hideViews Indicates whether or not to hide the views before enabling.
  */
 - (void)enableFullyHidingViews:(BOOL)hideViews;
+
+@end
+
+
+@protocol JDFPeekabooCoordinatorDelegate <NSObject>
+
+@optional
+- (void)peekabooCoordinator:(JDFPeekabooCoordinator *)sender fullyCollapsedViewsForScrollView:(UIScrollView *)scrollView;
+- (void)peekabooCoordinator:(JDFPeekabooCoordinator *)sender fullyExpandedViewsForScrollView:(UIScrollView *)scrollView;
+- (void)peekabooCoordinator:(JDFPeekabooCoordinator *)sender scrolledToPercentageHidden:(CGFloat)percentageHidden;
 
 @end
