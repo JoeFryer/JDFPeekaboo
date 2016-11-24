@@ -367,7 +367,6 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
 
 - (CGFloat)topViewPercentageHidden
 {
-    CGFloat statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
     CGRect frame = self.topView.frame;
     CGFloat percentage = (self.topViewDefaultY - frame.origin.y - self.topViewDefaultY) / (frame.size.height - self.topViewMinimisedHeight);
     return percentage;
