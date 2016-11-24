@@ -1,6 +1,6 @@
 PODS:
   - Expecta (0.3.1)
-  - JDFPeekaboo (0.1.0)
+  - JDFPeekaboo (0.2.2)
   - Specta (0.3.0.beta1)
 
 DEPENDENCIES:
@@ -21,8 +21,10 @@ CHECKOUT OPTIONS:
     :tag: v0.3.0.beta1
 
 SPEC CHECKSUMS:
-  Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
-  JDFPeekaboo: 25b04a823c20e04c5c072cd1176837670f181e29
-  Specta: 63e8ac8e07db6675c7096d37f77a266a1be4c02d
+  Expecta: a354d4633409dd9fe8c4f5ff5130426adbe31628
+  JDFPeekaboo: 9dc60d1ddc4022f615a5cf8b4d919401ee67f320
+  Specta: 373ce98f17f35069903ff7afac3b29ad9cc04893
 
-COCOAPODS: 0.35.0
+PODFILE CHECKSUM: 33d65a22429226c7d58e8245f305621d72398aa2
+
+COCOAPODS: 1.1.1
