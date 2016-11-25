@@ -72,6 +72,9 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
 
 - (void)setScrollView:(UIScrollView *)scrollView
 {
+    if (_scrollView && _scrollView != scrollView) {
+        _scrollView.delegate = _scrollViewRealDelegate;
+    }
     _scrollView = scrollView;
     self.scrollViewRealDelegate = scrollView.delegate;
     _scrollView.delegate = self;
