@@ -190,6 +190,10 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    if (scrollView.frame.size.height > scrollView.contentSize.height) {
+        return;
+    }
+    
     if (!self.scrollingCoordinatorEnabled) {
         return;
     }
