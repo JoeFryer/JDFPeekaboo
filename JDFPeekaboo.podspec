@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "JDFPeekaboo"
-  s.version          = "0.2.2"
+  s.version          = "0.3"
   s.summary          = "JDFPeekaboo is a simple class that hides the navigation bar when you scroll."
   s.description      = <<-DESC
                         JDFPeekaboo is a simple class that hides the navigation bar when you scroll down, and shows it again when you scroll back up. It can actually be any UIView that it hides, and it will also hide a view at the bottom of the screen as well, if you like.

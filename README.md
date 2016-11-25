@@ -62,6 +62,10 @@ JDFPeekaboo is available under the MIT license. See the LICENSE file for more in
 
 ## Releases
 
+#### 0.3
+ - JDFPeekabooCoordinator now has a delegate
+ - Fixed bottom bar positioning
+
 #### 0.2
 
  - Fixed some bugs (improved landscape support).
