@@ -106,6 +106,11 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
     return self;
 }
 
+- (void)dealloc
+{
+    self.scrollView.delegate = self.scrollViewRealDelegate;
+}
+
 
 #pragma mark - Public - General
 
