@@ -73,8 +73,17 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
 
 - (void)setScrollView:(UIScrollView *)scrollView
 {
-    if (_scrollView && _scrollView != scrollView) {
-        _scrollView.delegate = _scrollViewRealDelegate;
+    if (scrollView == _scrollView) {
+
+        if (scrollView.delegate == self) {
+
+            return;
+        }
+    } else {
+
+        if (self.scrollView) {
+            self.scrollView.delegate = self.scrollViewRealDelegate;
+        }
     }
     _scrollView = scrollView;
     self.scrollViewRealDelegate = scrollView.delegate;
@@ -202,15 +211,15 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
     if (scrollView.frame.size.height > scrollView.contentSize.height) {
         return;
     }
-    
+
     if (!self.scrollingCoordinatorEnabled) {
         return;
     }
-    
+
     if ([self.scrollViewRealDelegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
         [self.scrollViewRealDelegate scrollViewDidScroll:scrollView];
     }
-    
+
     if (self.containingView.bounds.size.height - self.topView.bounds.size.height >= scrollView.contentSize.height && self.bottomView) {
         UIEdgeInsets contentInset = self.scrollView.contentInset;
         contentInset.bottom = self.bottomView.bounds.size.height;
@@ -219,10 +228,10 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
     } else {
         scrollView.contentInset = self.scrollView.contentInset;
     }
-    
+
     CGRect topBarFrame = self.topView.frame;
     CGRect bottomBarFrame = self.bottomView.frame;
-    
+
     CGFloat topBarHeight = topBarFrame.size.height;
     if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
         topBarHeight += self.topViewMinimisedHeight;
@@ -231,7 +240,7 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
     CGFloat scrollDiff = scrollOffset - self.previousScrollViewYOffset;
     CGFloat scrollHeight = scrollView.frame.size.height;
     CGFloat scrollContentSizeHeight = scrollView.contentSize.height + scrollView.contentInset.bottom;
-    
+
     CGFloat defaultBottomViewY = self.containingView.frame.size.height - self.bottomBarDefaultHeight;
     if (scrollOffset <= -scrollView.contentInset.top) {
         topBarFrame.origin.y = self.topViewDefaultY;
@@ -244,31 +253,31 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
         CGFloat toolbarY = MAX(defaultBottomViewY, MIN(self.containingView.frame.size.height, bottomBarFrame.origin.y + scrollDiff));
         bottomBarFrame.origin.y = toolbarY;
     }
-    
+
     if (self.bottomView) {
         UIEdgeInsets scrollViewInset = self.scrollView.contentInset;
         CGFloat bottomInset = self.containingView.frame.size.height - bottomBarFrame.origin.y;
         scrollViewInset.bottom = bottomInset < 0.0f ? 0.0f : bottomInset;
         self.scrollView.contentInset = scrollViewInset;
     }
-    
+
     [self.topView setFrame:topBarFrame];
     [self.bottomView setFrame:bottomBarFrame];
-    
+
     CGFloat top = topBarFrame.origin.y + topBarFrame.size.height;
     CGFloat bottom;
-    
+
     if (self.bottomView) {
         bottom = self.scrollView.frame.size.height - bottomBarFrame.origin.y;
     } else {
         bottom = self.scrollView.scrollIndicatorInsets.bottom;
     }
-    
+
     self.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(top, 0, bottom, 0);
-    
+
     CGFloat topViewPercentageHidden = [self topViewPercentageHidden];
     [self updateTopViewSubviews:(1 - topViewPercentageHidden)];
-    
+
     if (topViewPercentageHidden == 0.0) {
         if ([self.delegate respondsToSelector:@selector(peekabooCoordinator:fullyExpandedViewsForScrollView:)]) {
             [self.delegate peekabooCoordinator:self fullyExpandedViewsForScrollView:scrollView];
@@ -278,11 +287,11 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
             [self.delegate peekabooCoordinator:self fullyCollapsedViewsForScrollView:scrollView];
         }
     }
-    
+
     if ([self.delegate respondsToSelector:@selector(peekabooCoordinator:scrolledToPercentageHidden:)]) {
         [self.delegate peekabooCoordinator:self scrolledToPercentageHidden:topViewPercentageHidden];
     }
-    
+
     self.previousScrollViewYOffset = scrollOffset;
 }
 
@@ -291,11 +300,11 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
     if (!self.scrollingCoordinatorEnabled) {
         return;
     }
-    
+
     if ([self.scrollViewRealDelegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
         [self.scrollViewRealDelegate scrollViewDidEndDecelerating:scrollView];
     }
-    
+
     [self stoppedScrolling:scrollView];
 }
 
@@ -304,7 +313,7 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
     if (!self.scrollingCoordinatorEnabled) {
         return;
     }
-    
+
     if ([self.scrollViewRealDelegate respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)]) {
         [self.scrollViewRealDelegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
     }
@@ -343,7 +352,7 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
         view.alpha = alpha;
     }
     self.topView.tintColor = [self.topView.tintColor colorWithAlphaComponent:alpha];
-    
+
     if ([self.topView isKindOfClass:[UINavigationBar class]]) {
         UINavigationBar *navigationBar = (UINavigationBar *)self.topView;
         NSMutableDictionary *navigationBarTitleTextAttributes = [navigationBar.titleTextAttributes mutableCopy] ? : [NSMutableDictionary dictionary];
@@ -419,11 +428,13 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
     return [super forwardingTargetForSelector:aSelector];
 }
 
+
 #pragma mark - TableView delegate forwarding
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
     if ([self isTableViewDelegateMethod:anInvocation.selector]) {
+
         if ([self.scrollViewRealDelegate respondsToSelector:anInvocation.selector]) {
             [anInvocation invokeWithTarget:self.scrollViewRealDelegate];
         }
@@ -435,6 +446,7 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
 {
     if ([self isTableViewDelegateMethod:aSelector]) {
+
         if ([self.scrollViewRealDelegate respondsToSelector:aSelector]) {
 
             return [[self.scrollViewRealDelegate class]
