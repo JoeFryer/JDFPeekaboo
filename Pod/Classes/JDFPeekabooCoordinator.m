@@ -74,13 +74,10 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
 - (void)setScrollView:(UIScrollView *)scrollView
 {
     if (scrollView == _scrollView) {
-
         if (scrollView.delegate == self) {
-
             return;
         }
     } else {
-
         if (self.scrollView) {
             self.scrollView.delegate = self.scrollViewRealDelegate;
         }
@@ -130,7 +127,7 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
 - (void)setBarsNeedDisplay
 {
     CGFloat topViewPercentageHidden = [self topViewPercentageHidden];
-    [self updateTopViewSubviews:(1 - topViewPercentageHidden)];
+    [self updateTopViewSubviews:(1.f - topViewPercentageHidden)];
 }
 
 - (void)fullyExpandViews
@@ -220,6 +217,10 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
         [self.scrollViewRealDelegate scrollViewDidScroll:scrollView];
     }
 
+    if (!(self.scrollView.isDragging || self.scrollView.isDecelerating) && fabs([self topViewPercentageHidden]) < FLT_EPSILON) {
+        return;
+    }
+
     if (self.containingView.bounds.size.height - self.topView.bounds.size.height >= scrollView.contentSize.height && self.bottomView) {
         UIEdgeInsets contentInset = self.scrollView.contentInset;
         contentInset.bottom = self.bottomView.bounds.size.height;
@@ -276,13 +277,13 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
     self.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(top, 0, bottom, 0);
 
     CGFloat topViewPercentageHidden = [self topViewPercentageHidden];
-    [self updateTopViewSubviews:(1 - topViewPercentageHidden)];
+    [self updateTopViewSubviews:(1.f - topViewPercentageHidden)];
 
-    if (topViewPercentageHidden == 0.0) {
+    if (fabs(topViewPercentageHidden) < FLT_EPSILON) {
         if ([self.delegate respondsToSelector:@selector(peekabooCoordinator:fullyExpandedViewsForScrollView:)]) {
             [self.delegate peekabooCoordinator:self fullyExpandedViewsForScrollView:scrollView];
         }
-    } else if (topViewPercentageHidden == 1.0) {
+    } else if (fabs(topViewPercentageHidden - 1.f) < FLT_EPSILON) {
         if ([self.delegate respondsToSelector:@selector(peekabooCoordinator:fullyCollapsedViewsForScrollView:)]) {
             [self.delegate peekabooCoordinator:self fullyCollapsedViewsForScrollView:scrollView];
         }
@@ -330,7 +331,8 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
     CGRect topViewFrame = self.topView.frame;
     CGFloat topViewMinimisedY = [self topViewMinimisedY];
     CGFloat topViewHalfY = (topViewMinimisedY + self.topViewDefaultY) / 2;
-    if (topViewFrame.size.height + scrollView.contentOffset.y - self.topViewMinimisedHeight < 0) {
+
+    if (fabs([self topViewPercentageHidden]) > FLT_EPSILON && self.topViewMinimisedHeight < - scrollView.contentOffset.y) {
         [self fullyExpandViews];
     } else if (topViewFrame.origin.y > topViewMinimisedY && topViewFrame.origin.y < topViewHalfY) {
         [self fullyHideViews];
@@ -390,7 +392,7 @@ static CGFloat const JDFPeekabooCoordinatorNavigationBarHorizontalHeightDifferen
 - (CGFloat)topViewPercentageHidden
 {
     CGRect frame = self.topView.frame;
-    CGFloat percentage = (self.topViewDefaultY - frame.origin.y - self.topViewDefaultY) / (frame.size.height - self.topViewMinimisedHeight);
+    CGFloat percentage = 1.f - (frame.size.height + frame.origin.y - self.topViewMinimisedHeight) / (frame.size.height - self.topViewMinimisedHeight);
     return percentage;
 }
 
