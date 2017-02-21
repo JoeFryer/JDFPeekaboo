@@ -8,8 +8,8 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = "JDFPeekaboo"
-  s.version          = "0.3.1"
+  s.name             = "JDFPeekaboo_Pitometsu"
+  s.version          = "0.3.2"
   s.summary          = "JDFPeekaboo is a simple class that hides the navigation bar when you scroll."
   s.description      = <<-DESC
                         JDFPeekaboo is a simple class that hides the navigation bar when you scroll down, and shows it again when you scroll back up. It can actually be any UIView that it hides, and it will also hide a view at the bottom of the screen as well, if you like.
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.homepage         = "https://github.com/JoeFryer/JDFPeekaboo"
   s.license          = 'MIT'
   s.author           = { "Joe Fryer" => "joe.d.fryer@gmail.com" }
-  s.source           = { :git => "https://github.com/JoeFryer/JDFPeekaboo.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/Pitometsu/JDFPeekaboo.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/JoeDFryer'
 
   s.platform     = :ios, '7.0'
@@ -26,4 +26,5 @@ Pod::Spec.new do |s|
   s.source_files = 'Pod/Classes'
 
   s.frameworks = 'UIKit'
+  s.module_name = 'JDFPeekaboo'
 end
