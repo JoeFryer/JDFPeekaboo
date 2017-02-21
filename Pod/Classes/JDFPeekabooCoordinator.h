@@ -129,6 +129,14 @@
  */
 - (void)enableFullyHidingViews:(BOOL)hideViews;
 
+#pragma mark - Fine tune
+
+/**
+ *  Expand bars only when @c scrollView reaches appropreate (top) content's edge.
+ *  By default property have @c NO value.
+ */
+@property (nonatomic, assign) BOOL expandOnReachOnly;
+
 @end
 
 
